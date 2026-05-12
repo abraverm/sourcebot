@@ -115,7 +115,7 @@ pkgs.stdenv.mkDerivation (finalAttrs: {
     # web
     cat <<EOF > $out/bin/sourcebot-web
     #!${pkgs.runtimeShell}
-    export PATH=\$PATH:${pkgs.openssl}/bin
+    export PATH=\$PATH:${pkgs.lib.makeBinPath (with pkgs; [openssl git])}
     export NODE_ENV=production
     export NODE_PATH=$out/node_modules
     export PRISMA_SCHEMA_ENGINE_BINARY=${pkgs.prisma-engines}/bin/schema-engine
